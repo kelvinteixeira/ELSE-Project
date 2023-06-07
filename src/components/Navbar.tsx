@@ -5,19 +5,20 @@ import { Menu } from "antd";
 
 const items: MenuProps["items"] = [
   {
-    label: "Ofertas",
+    label: <a href="/">Ofertas</a>,
     key: "offers",
     icon: <AppstoreOutlined />,
   },
   {
-    label: "Administraçao",
-    key: "app",
+    label: <a href="/adminstration">Adminstração</a>,
+    key: "adminstration",
     icon: <ProfileOutlined />,
+    
   },
 ];
 
 export function Navbar() {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("");
 
   const onClick: MenuProps["onClick"] = (e) => {
     setCurrent(e.key);

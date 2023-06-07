@@ -2,5 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  background-color: var(--bg-color)
+}
+
+:root {
+  --bg-color: #f3f0f0;
 }
