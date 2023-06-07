@@ -1,4 +1,5 @@
 export type CarProps = {
+  id?: number;
   image?: string;
   model?: string;
   price?: number;

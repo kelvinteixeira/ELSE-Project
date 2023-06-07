@@ -1,15 +1,11 @@
 import { useState } from "react";
-import { Typography, Card, Row } from "antd";
+import { Typography, Card, Row, Image } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { CarProps } from "../Global/types";
 import { CarModal } from "./CarModal";
 
 export function OffersCard(props: CarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  function handleClose() {
-    setIsModalOpen(false);
-  }
 
   return (
     <>
@@ -18,11 +14,18 @@ export function OffersCard(props: CarProps) {
         hoverable
         type="inner"
         style={{ width: 350, padding: 5, margin: 25 }}
-        cover={
-          <img style={{ padding: 5 }} alt="imagem do carro" src={props.image} />
-        }
-        title={`${props.brand} ${props.model}`}
       >
+        <Row justify={"center"}>
+          <Typography.Title>{props.model}</Typography.Title>
+        </Row>
+        <Image
+          alt={`Imagem de um ${props.model}, marca ${props.brand}`}
+          src={props.image}
+          preview={false}
+        />
+        <Row justify={"end"}>
+          <Typography.Text>Marca: {props.brand} </Typography.Text>
+        </Row>
         <Row justify={"end"}>
           <Typography.Text>Ano: {props.year} </Typography.Text>
         </Row>
@@ -43,7 +46,7 @@ export function OffersCard(props: CarProps) {
           <Typography.Text>{props.visualizationCounter} </Typography.Text>
         </Row>
       </Card>
-      <CarModal {...props} openModal={isModalOpen} handleClose={handleClose} />
+      <CarModal {...props} openModal={isModalOpen} handleClose={() => setIsModalOpen(false)} />
     </>
   );
 }
