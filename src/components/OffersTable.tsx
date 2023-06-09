@@ -1,39 +1,34 @@
 import { useState } from "react";
-import { Image, Table, Tooltip } from "antd";
+import { Button, Col, Image, Row, Table, Tooltip, Input } from "antd";
 import { CarProps } from "../Global/types";
 import { fakeCars } from "../mock";
-import { CarModal } from "./CarModal";
-import { EyeOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+
+const { Search } = Input;
 
 export function OffersTable() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const searchToLowerCase = searchValue.toLowerCase();
+
+  const cars = fakeCars.filter(
+    (cars) =>
+      cars.brand.toLowerCase().includes(searchToLowerCase) ||
+      cars.model.toLowerCase().includes(searchToLowerCase)
+  );
 
   const columns: ColumnsType<CarProps> = [
     {
-      title: "Imagem",
+      title: "Fotos",
       dataIndex: "image",
       key: "image",
       render: (image) => <Image width={100} src={image} />,
-      width: "12%",
+      width: "10%",
     },
     {
       title: "Marca",
       dataIndex: "brand",
       key: "brand",
-      filterSearch: true,
-      filters: [
-        {
-          text: "Ferrari",
-          value: "Ferrari",
-        },
-        {
-          text: "Nissan",
-          value: "Nissan",
-        },
-      ],
-      onFilter: (value: string, record) => record.brand.startsWith(value),
-      width: "15%",
     },
     {
       title: "Modelo",
@@ -53,40 +48,75 @@ export function OffersTable() {
       sorter: (a, b) => a.price - b.price,
     },
     {
-      title: "Visualizações",
-      dataIndex: "visualizationCounter",
-      key: "visualizationCounter",
-      sorter: (a, b) => a.visualizationCounter - b.visualizationCounter,
+      title: "Cor",
+      dataIndex: "color",
+      key: "color",
+    },
+    {
+      title: "Quilometragem",
+      dataIndex: "mileage",
+      key: "mileage",
+    },
+    {
+      title: "Placa",
+      dataIndex: "plate",
+      key: "plate",
+    },
+    {
+      title: "Cidade",
+      dataIndex: "city",
+      key: "city",
+    },
+    {
+      title: "Data de registro",
+      dataIndex: "registerDate",
+      key: "registerDate",
     },
     {
       title: "Ações",
       dataIndex: "id",
       align: "center",
-      render: (_, record) => (
-        <>
-          <Tooltip title="Mais informações" color="blue">
-            <EyeOutlined onClick={() => setIsModalOpen(true)} />
+      render: () => (
+        <Row justify={"space-around"}>
+          <Tooltip title="Editar oferta" color="blue">
+            <Button icon={<EditOutlined />} />
           </Tooltip>
-          <CarModal
-            {...record}
-            openModal={isModalOpen}
-            handleClose={() => setIsModalOpen(false)}
-          />
-        </>
+          <Tooltip title="Excluir oferta" color="blue">
+            <Button icon={<DeleteOutlined />} />
+          </Tooltip>
+        </Row>
       ),
     },
   ];
   return (
-    <>
+    <Col>
+      <Row
+        align={"middle"}
+        justify={"end"}
+        style={{ paddingTop: 20, paddingRight: 20 }}
+      >
+        <Search
+          value={searchValue}
+          type="search"
+          placeholder="Busque aqui por marca ou modelo"
+          allowClear
+          size="middle"
+          onChange={(e) => setSearchValue(e.target.value)}
+          style={{ width: 250, marginRight: 5 }}
+        />
+
+        <Button type="primary">Nova oferta</Button>
+      </Row>
+
       <Table
-        style={{ width: 1000, marginTop: 20 }}
+        style={{ padding: 20 }}
         columns={columns}
-        dataSource={fakeCars}
+        dataSource={cars}
         size="small"
         bordered
         pagination={false}
         tableLayout="fixed"
       />
-    </>
+    </Col>
   );
 }
