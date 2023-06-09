@@ -13,15 +13,17 @@ export function OffersCard(props: CarProps) {
         onClick={() => setIsModalOpen(true)}
         hoverable
         type="inner"
-        style={{ width: 350, padding: 5, margin: 25 }}
+        style={{ width: 350, padding: 5, margin: 10 }}
       >
         <Row justify={"center"}>
           <Typography.Title>{props.model}</Typography.Title>
         </Row>
         <Image
           alt={`Imagem de um ${props.model}, marca ${props.brand}`}
-          src={props.image}
+          src={props.cover}
           preview={false}
+          width={300}
+          height={200}
         />
         <Row justify={"end"}>
           <Typography.Text>Marca: {props.brand} </Typography.Text>

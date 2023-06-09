@@ -1,4 +1,4 @@
-import { Button, Col, Modal, Typography, Row, Tooltip,Image  } from "antd";
+import { Button, Col, Modal, Typography, Row, Tooltip, Image } from "antd";
 import { CarProps } from "../Global/types";
 import { LeftCircleTwoTone, RightCircleTwoTone } from "@ant-design/icons";
 
@@ -25,17 +25,19 @@ export function CarModal(props: CarModalProps) {
         <Row justify={"space-evenly"}>
           <Col>
             <Col>
-              <Image 
-                style={{
-                  display: "flex",
-                  padding: 5,
-                  width: 600,
-                  justifyContent: "center",
-                  marginBottom: 10,
-                }}
-                alt="imagem do carro"
-                src={props.image}
-              />
+              {props.images.map((image) => (
+                <Image
+                  style={{
+                    display: "flex",
+                    padding: 5,
+                    width: 600,
+                    justifyContent: "center",
+                    marginBottom: 10,
+                  }}
+                  alt="imagem do carro"
+                  src={image}
+                />
+              ))}
             </Col>
             <Row align={"middle"} justify={"space-evenly"}>
               <Tooltip title="Foto anterior">

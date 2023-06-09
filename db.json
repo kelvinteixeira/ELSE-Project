@@ -89,6 +89,24 @@
       "plate": "GHG-0921",
       "registerDate": "21062022",
       "visualizationCounter": 2299
+    },
+    {
+      "id": 6,
+      "brand": "Fiat",
+      "model": "Siena",
+      "cover": "https://blog.olhonocarro.com.br/wp-content/uploads/2023/01/fiat-siena-2007-G4-dianteira.jpg",
+      "images": [
+        "https://img2.icarros.com/dbimg/imgnoticia/4/23852_1",
+        "https://www.brcarauto.com.br/carros/4d207f7ae56741c889ade18c37789764-thumbjpeg-fiat-siena-8929009-1000-750-70.jpg"
+      ],
+      "price": 25000,
+      "year": 2015,
+      "mileage": 676,
+      "color": "Prata",
+      "city": "Rio de Janeior",
+      "plate": "ADC-1431",
+      "registerDate": "25122022",
+      "visualizationCounter":3811
     }
   ]
 }

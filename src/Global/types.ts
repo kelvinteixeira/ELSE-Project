@@ -1,6 +1,7 @@
 export type CarProps = {
   id: number;
-  image: string;
+  cover: string;
+  images: string[];
   model: string;
   price: number;
   brand: string;

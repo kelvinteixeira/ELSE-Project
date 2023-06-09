@@ -1,11 +1,22 @@
 import { Row, Tooltip, FloatButton } from "antd";
 import { OffersCard } from "../components/OffersCard";
-import { fakeCars } from "../mock";
 import { AppstoreOutlined, ProfileOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { CarProps } from "../Global/types";
+import { api } from "../api";
 
 export function Offers() {
   const [visualizationMode, setVisualizationMode] = useState(false);
+  const [offers, setOffers] = useState<Array<CarProps>>([]);
+
+  useEffect(() => {
+    api.get('/offers')
+    .then(response => {
+      return setOffers(response.data);
+    }).catch((err) => {
+      console.log("Erro: ", err)
+    })
+  },[])
 
   return (
     <>
@@ -25,9 +36,9 @@ export function Offers() {
       <Row wrap justify={"space-evenly"}>
         {visualizationMode
           ? null
-          : fakeCars.map((cars) => (
+          : offers.map((offer) => (
               <>
-                <OffersCard {...cars} key={cars.id} />
+                <OffersCard {...offer} key={offer.id} />
               </>
             ))}
       </Row>

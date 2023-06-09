@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Image, Row, Table, Tooltip, Input } from "antd";
 import { CarProps } from "../Global/types";
-import { fakeCars } from "../mock";
 import type { ColumnsType } from "antd/es/table";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { api } from "../api";
 
 const { Search } = Input;
 
@@ -11,7 +11,18 @@ export function OffersTable() {
   const [searchValue, setSearchValue] = useState("");
   const searchToLowerCase = searchValue.toLowerCase();
 
-  const cars = fakeCars.filter(
+  const [offers, setOffers] = useState<Array<CarProps>>([]);
+
+  useEffect(() => {
+    api.get('/offers')
+    .then(response => {
+      return setOffers(response.data);
+    }).catch((err) => {
+      console.log("Erro: ", err)
+    })
+  },[])
+
+  const filteredOffers = offers.filter(
     (cars) =>
       cars.brand.toLowerCase().includes(searchToLowerCase) ||
       cars.model.toLowerCase().includes(searchToLowerCase)
@@ -20,15 +31,16 @@ export function OffersTable() {
   const columns: ColumnsType<CarProps> = [
     {
       title: "Fotos",
-      dataIndex: "image",
-      key: "image",
-      render: (image) => <Image width={100} src={image} />,
+      dataIndex: "cover",
+      key: "cover",
+      render: (image) => <Image width={100} height={70} src={image} />,
       width: "10%",
     },
     {
       title: "Marca",
       dataIndex: "brand",
       key: "brand",
+      width: "10%",
     },
     {
       title: "Modelo",
@@ -111,7 +123,7 @@ export function OffersTable() {
       <Table
         style={{ padding: 20 }}
         columns={columns}
-        dataSource={cars}
+        dataSource={filteredOffers}
         size="small"
         bordered
         pagination={false}
