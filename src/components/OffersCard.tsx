@@ -48,7 +48,11 @@ export function OffersCard(props: CarProps) {
           <Typography.Text>{props.visualizationCounter} </Typography.Text>
         </Row>
       </Card>
-      <CarModal {...props} openModal={isModalOpen} handleClose={() => setIsModalOpen(false)} />
+      <CarModal
+        {...props}
+        openModal={isModalOpen}
+        handleClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 }
