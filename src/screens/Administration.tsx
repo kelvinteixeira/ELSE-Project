@@ -1,5 +1,10 @@
-export function Administration(){
+import { Row } from "antd";
+import { OffersTable } from "../components/OffersTable";
+
+export function Administration() {
   return (
-    <h1>Hello Administration!</h1>
-  )
+    <Row align={"middle"} justify={"center"}>
+      <OffersTable />
+    </Row>
+  );
 }

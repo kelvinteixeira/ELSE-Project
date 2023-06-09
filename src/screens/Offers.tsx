@@ -3,7 +3,6 @@ import { OffersCard } from "../components/OffersCard";
 import { fakeCars } from "../mock";
 import { AppstoreOutlined, ProfileOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { OffersTable } from "../components/OffersTable";
 
 export function Offers() {
   const [visualizationMode, setVisualizationMode] = useState(false);
@@ -24,15 +23,13 @@ export function Offers() {
       </Tooltip>
 
       <Row wrap justify={"space-evenly"}>
-        {visualizationMode ? (
-          <OffersTable />
-        ) : (
-          fakeCars.map((cars) => (
-            <>
-              <OffersCard {...cars} key={cars.id} />
-            </>
-          ))
-        )}
+        {visualizationMode
+          ? null
+          : fakeCars.map((cars) => (
+              <>
+                <OffersCard {...cars} key={cars.id} />
+              </>
+            ))}
       </Row>
     </>
   );
