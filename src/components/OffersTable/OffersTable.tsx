@@ -1,5 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import { Image, Button, Form, Input, Popconfirm, Row, Table } from "antd";
+import {
+  Image,
+  Button,
+  Form,
+  Input,
+  Popconfirm,
+  Row,
+  Table,
+  message,
+} from "antd";
 import { CarProps } from "../../Global/types";
 import { api } from "../../api";
 import {
@@ -51,7 +61,13 @@ export function OffersTable() {
   async function handleDelete(id: number) {
     const newData = data.filter((item) => item.id !== id);
     setData(newData);
-    await api.delete(`offers/${id}`);
+    try {
+      await api.delete(`offers/${id}`);
+      message.success("Oferta excluida com sucesso", 3);
+    } catch (error) {
+      console.log(error)
+      message.success("Algo inesperado aconteceu", 3);
+    }
   }
 
   const save = async (id: number) => {
@@ -79,10 +95,12 @@ export function OffersTable() {
         });
         setData(newData);
         setEditingKey("");
+        message.success("Dados alterados com sucesso", 3);
       } else {
         newData.push(row);
         setData(newData);
         setEditingKey("");
+        message.error("Algo inesperado aconteceu", 3);
       }
     } catch (errInfo) {
       console.log("Validate Failed:", errInfo);
@@ -133,7 +151,7 @@ export function OffersTable() {
       key: "price",
       sorter: (firstValue: { price: number }, secondValue: { price: number }) =>
         firstValue.price - secondValue.price,
-      render: (_: never, record: CarProps) =>
+      render: (_: any, record: CarProps) =>
         record.price.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -171,14 +189,14 @@ export function OffersTable() {
       title: "Data de registro",
       dataIndex: "registerDate",
       key: "registerDate",
-      render: (_: never, record: CarProps) =>
+      render: (_: any, record: CarProps) =>
         formatDate(new Date(record.registerDate)),
       width: "8%",
     },
     {
       title: "operation",
       dataIndex: "operation",
-      render: (_: never, record: CarProps) => {
+      render: (_: any, record: CarProps) => {
         const editable = isEditing(record);
         return editable ? (
           <Row justify={"space-around"}>

@@ -7,15 +7,17 @@ import { api } from "../api";
 
 export function OffersCard(props: CarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [visualizationCount, setVisualizationCount] = useState(props.visualizationCounter);
+  const [visualizationCount, setVisualizationCount] = useState(
+    props.visualizationCounter
+  );
 
-  useEffect(()=> {
-    setVisualizationCount(props.visualizationCounter)
-  },[props.visualizationCounter])
+  useEffect(() => {
+    setVisualizationCount(props.visualizationCounter);
+  }, [props.visualizationCounter]);
 
   async function incrementVisualization(id: number) {
     await api.patch(`/offers/${id}`, {
-      visualizationCounter: props.visualizationCounter + 1,
+      visualizationCounter: visualizationCount + 1,
     });
     setVisualizationCount(visualizationCount + 1);
   }
@@ -48,15 +50,14 @@ export function OffersCard(props: CarProps) {
           <Typography.Text>Ano: {props.year} </Typography.Text>
         </Row>
         <Row justify={"end"}>
-          <Typography.Text style={{ fontSize: 10, lineHeight: 2 }} strong>
-            R$:
-          </Typography.Text>{" "}
-          &nbsp;
           <Typography.Text
             style={{ fontSize: 20, fontFamily: "Montserrat" }}
             strong
           >
-            {props.price}{" "}
+            {props.price.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}{" "}
           </Typography.Text>
         </Row>
         <Row justify={"start"} align={"middle"}>
