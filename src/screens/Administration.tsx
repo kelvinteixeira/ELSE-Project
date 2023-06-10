@@ -1,5 +1,5 @@
 import { Row } from "antd";
-import { OffersTable } from "../components/OffersTable";
+import { OffersTable } from "../components/OffersTable/OffersTable";
 
 export function Administration() {
   return (
