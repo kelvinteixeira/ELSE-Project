@@ -36,7 +36,7 @@ export function Offers() {
         />
       </Tooltip>
 
-      <Row wrap>
+      <Row wrap justify={"space-around"}>
         {visualizationMode ? (
           <OffersList dataSource={offers} />
         ) : (

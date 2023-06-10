@@ -1,5 +1,6 @@
 import { Col, Modal, Typography, Row, Image, Carousel } from "antd";
 import { CarProps } from "../Global/types";
+import { formatDate } from "../utils/date";
 
 interface OffersModalProps extends CarProps {
   openModal: boolean;
@@ -23,13 +24,9 @@ export function OffersModal(props: OffersModalProps) {
 
         <Row justify={"space-evenly"}>
           <Col span={12}>
-            <Carousel>
+            <Carousel dotPosition={"top"}>
               {props.images.map((image) => (
-                <Image
-                  style={{ maxWidth: 600 }}
-                  alt="imagem do carro"
-                  src={image}
-                />
+                <Image alt="imagem do carro" src={image} />
               ))}
             </Carousel>
           </Col>
@@ -114,7 +111,7 @@ export function OffersModal(props: OffersModalProps) {
                 Data de cadastro:
               </Typography.Text>{" "}
               &nbsp;
-              <Typography.Text>{props.registerDate}</Typography.Text>
+              <Typography.Text>{formatDate(new Date(props.registerDate))}</Typography.Text>
             </Row>
           </Col>
         </Row>
