@@ -1,6 +1,5 @@
-import { Button, Col, Modal, Typography, Row, Tooltip, Image } from "antd";
+import { Col, Modal, Typography, Row, Image, Carousel } from "antd";
 import { CarProps } from "../Global/types";
-import { LeftCircleTwoTone, RightCircleTwoTone } from "@ant-design/icons";
 
 interface OffersModalProps extends CarProps {
   openModal: boolean;
@@ -23,34 +22,27 @@ export function OffersModal(props: OffersModalProps) {
         >{`${props.brand} ${props.model}`}</Typography.Title>
 
         <Row justify={"space-evenly"}>
-          <Col>
-            <Col>
+          <Col span={12}>
+            <Carousel>
               {props.images.map((image) => (
                 <Image
-                  style={{
-                    display: "flex",
-                    padding: 5,
-                    width: 600,
-                    justifyContent: "center",
-                    marginBottom: 10,
-                  }}
+                  style={{ maxWidth: 600 }}
                   alt="imagem do carro"
                   src={image}
                 />
               ))}
-            </Col>
-            <Row align={"middle"} justify={"space-evenly"}>
-              <Tooltip title="Foto anterior">
-                <Button icon={<LeftCircleTwoTone />} />
-              </Tooltip>
-              <Tooltip title="Próxima foto">
-                <Button icon={<RightCircleTwoTone />} />
-              </Tooltip>
-            </Row>
+            </Carousel>
           </Col>
 
           <Col>
-            <Typography.Text strong style={{ margin: 30, fontSize: 20 }}>
+            <Typography.Text
+              strong
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                fontSize: 20,
+              }}
+            >
               {" "}
               Mais informações
             </Typography.Text>
@@ -68,7 +60,12 @@ export function OffersModal(props: OffersModalProps) {
                 Valor de compra:
               </Typography.Text>{" "}
               &nbsp;
-              <Typography.Text>R$ {props.price}</Typography.Text>
+              <Typography.Text>
+                {props.price.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </Typography.Text>
             </Row>
             <Row align={"middle"}>
               <Typography.Text strong style={{ fontSize: 14 }}>
