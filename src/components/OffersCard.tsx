@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography, Card, Row, Image } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { CarProps } from "../Global/types";
-import { CarModal } from "./CarModal";
+import { OffersModal } from "./OffersModal";
+import { api } from "../api";
 
 export function OffersCard(props: CarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [visualizationCount, setVisualizationCount] = useState(props.visualizationCounter);
+
+  useEffect(()=> {
+    setVisualizationCount(props.visualizationCounter)
+  },[props.visualizationCounter])
+
+  async function incrementVisualization(id: number) {
+    await api.patch(`/offers/${id}`, {
+      visualizationCounter: props.visualizationCounter + 1,
+    });
+    setVisualizationCount(visualizationCount + 1);
+  }
 
   return (
     <>
       <Card
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          setIsModalOpen(true);
+          incrementVisualization(props.id);
+        }}
         hoverable
         type="inner"
         style={{ width: 350, padding: 5, margin: 10 }}
@@ -20,7 +36,7 @@ export function OffersCard(props: CarProps) {
         </Row>
         <Image
           alt={`Imagem de um ${props.model}, marca ${props.brand}`}
-          src={props.cover}
+          src={props.images[0]}
           preview={false}
           width={300}
           height={200}
@@ -45,13 +61,15 @@ export function OffersCard(props: CarProps) {
         </Row>
         <Row justify={"start"} align={"middle"}>
           <EyeOutlined /> &nbsp;
-          <Typography.Text>{props.visualizationCounter} </Typography.Text>
+          <Typography.Text>{visualizationCount} </Typography.Text>
         </Row>
       </Card>
-      <CarModal
+      <OffersModal
         {...props}
         openModal={isModalOpen}
-        handleClose={() => setIsModalOpen(false)}
+        handleClose={() => {
+          setIsModalOpen(false);
+        }}
       />
     </>
   );
