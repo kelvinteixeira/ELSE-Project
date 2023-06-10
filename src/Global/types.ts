@@ -1,6 +1,5 @@
 export type CarProps = {
   id: number;
-  cover: string;
   images: string[];
   model: string;
   price: number;
@@ -9,7 +8,7 @@ export type CarProps = {
   color: string;
   city: string;
   plate: string;
-  mileage: number;
+  mileage: string;
   registerDate: string;
   visualizationCounter: number;
 };

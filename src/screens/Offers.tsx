@@ -37,9 +37,11 @@ export function Offers() {
       </Tooltip>
 
       <Row wrap>
-        {visualizationMode
-          ? <OffersList dataSource={offers}/>
-          : offers.map((offer) => <OffersCard {...offer} key={offer.id} />)}
+        {visualizationMode ? (
+          <OffersList dataSource={offers} />
+        ) : (
+          offers.map((offer) => <OffersCard {...offer} key={offer.id} />)
+        )}
       </Row>
     </>
   );

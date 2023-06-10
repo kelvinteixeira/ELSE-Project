@@ -2,7 +2,7 @@ import { List, Typography, Row, Image } from "antd";
 import { CarProps } from "../Global/types";
 import { EyeOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { CarModal } from "./CarModal";
+import { OffersModal } from "./OffersModal";
 
 interface OffersListProps {
   dataSource: CarProps[];
@@ -41,7 +41,7 @@ export function OffersList({ dataSource }: OffersListProps) {
               </Row>
             </List.Item>
             {selectedOffer === item.id && (
-              <CarModal
+              <OffersModal
                 {...item}
                 openModal={isModalOpen}
                 handleClose={() => setIsModalOpen(false)}

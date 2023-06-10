@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Image, Row, Table, Tooltip, Input } from "antd";
+import { Button, Image, Row, Table, Tooltip, Input } from "antd";
 import { CarProps } from "../Global/types";
 import type { ColumnsType } from "antd/es/table";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { api } from "../api";
+import { OffersRegisterModal } from "./OffersRegisterModal";
+import { formatDate } from "../utils/date";
 
 const { Search } = Input;
 
 export function OffersTable() {
+  const [offers, setOffers] = useState<Array<CarProps>>([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const searchToLowerCase = searchValue.toLowerCase();
 
-  const [offers, setOffers] = useState<Array<CarProps>>([]);
-
   useEffect(() => {
-    api.get('/offers')
-    .then(response => {
-      return setOffers(response.data);
-    }).catch((err) => {
-      console.log("Erro: ", err)
-    })
-  },[])
+    api
+      .get("/offers")
+      .then((response) => {
+        return setOffers(response.data);
+      })
+      .catch((err) => {
+        console.log("Erro: ", err);
+      });
+  }, []);
 
   const filteredOffers = offers.filter(
     (cars) =>
@@ -31,9 +35,9 @@ export function OffersTable() {
   const columns: ColumnsType<CarProps> = [
     {
       title: "Fotos",
-      dataIndex: "cover",
-      key: "cover",
-      render: (image) => <Image width={100} height={70} src={image} />,
+      dataIndex: "images",
+      key: "images",
+      render: (image) => <Image width={100} height={70} src={image[0]} />,
       width: "10%",
     },
     {
@@ -58,6 +62,8 @@ export function OffersTable() {
       dataIndex: "price",
       key: "price",
       sorter: (a, b) => a.price - b.price,
+      render: (_, record) => record.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+      width: '12%'
     },
     {
       title: "Cor",
@@ -83,6 +89,8 @@ export function OffersTable() {
       title: "Data de registro",
       dataIndex: "registerDate",
       key: "registerDate",
+      render: (_, record) => formatDate(new Date(record.registerDate)),
+      width: '9%'
     },
     {
       title: "Ações",
@@ -101,7 +109,7 @@ export function OffersTable() {
     },
   ];
   return (
-    <Col>
+    <>
       <Row
         align={"middle"}
         justify={"end"}
@@ -117,7 +125,9 @@ export function OffersTable() {
           style={{ width: 250, marginRight: 5 }}
         />
 
-        <Button type="primary">Nova oferta</Button>
+        <Button onClick={() => setIsModalOpen(true)} type="primary">
+          Nova oferta
+        </Button>
       </Row>
 
       <Table
@@ -129,6 +139,10 @@ export function OffersTable() {
         pagination={false}
         tableLayout="fixed"
       />
-    </Col>
+      <OffersRegisterModal
+        openModal={isModalOpen}
+        handleClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }
