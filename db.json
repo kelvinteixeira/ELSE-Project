@@ -4,8 +4,8 @@
       "id": 1,
       "brand": "Ferrari",
       "model": "821 GTS",
-      "cover": "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1617294044/autoexpress/2021/04/Ferrari%20812%20GTS-2.jpg",
       "images": [
+        "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1617294044/autoexpress/2021/04/Ferrari%20812%20GTS-2.jpg",
         "https://www.topgear.com/sites/default/files/cars-car/image/2020/10/_g3a8561.jpg",
         "https://www.topgear.com/sites/default/files/cars-car/carousel/2020/10/_g3a9827d.jpg"
       ],
@@ -15,15 +15,15 @@
       "color": "Azul",
       "city": "Campina Grande",
       "plate": "QFvc35AD",
-      "registerDate": "10321980",
-      "visualizationCounter": 8223
+      "registerDate": "2023-06-09T23:10:06.000Z",
+      "visualizationCounter": 4646
     },
     {
       "id": 2,
       "brand": "Chevrolet",
       "model": "Celta",
-      "cover": "https://cdn.carrosp.com.br/img/11/full/chevrolet-celta-2013-sao-carlos-cd9cb93700bcaed38a921bafca1fe8fe.jpg",
       "images": [
+        "https://cdn.carrosp.com.br/img/11/full/chevrolet-celta-2013-sao-carlos-cd9cb93700bcaed38a921bafca1fe8fe.jpg",
         "https://api.mobiauto.com.br/images/api/images/v1.0/67427593",
         "https://eloiveiculos.com.br/carros/9f66abfaf9902dd32c871db8db75a223-thumbjpeg-chevrolet-celta-8832201-1000-750-70.jpg"
       ],
@@ -33,33 +33,33 @@
       "color": "Preto",
       "city": "Campina Grande",
       "plate": "QFT-3456",
-      "registerDate": "05082022",
-      "visualizationCounter": 1310
+      "registerDate": "2023-06-09T23:10:06.000Z",
+      "visualizationCounter": 1325
     },
     {
       "id": 3,
       "brand": "Volkswagen",
       "model": "Polo",
-      "cover": "https://1.bp.blogspot.com/-10cfobqZAWw/Xi4IEGWhs-I/AAAAAAAAaZ0/QOEbsX95K3sCDjy2ANhwL8gm_XNbVEhhQCLcBGAsYHQ/s1600/VW-Polo-GTS-Branco%2B%252812%2529.jpg",
       "images": [
+        "https://1.bp.blogspot.com/-10cfobqZAWw/Xi4IEGWhs-I/AAAAAAAAaZ0/QOEbsX95K3sCDjy2ANhwL8gm_XNbVEhhQCLcBGAsYHQ/s1600/VW-Polo-GTS-Branco%2B%252812%2529.jpg",
         "https://www.fiattrevisul.com.br/imgs/dXBsb2Fkcy9zZW1pcy8xNjc2MDMxNjIxLTEuanBn/750/400/N/crop",
         "https://i.ytimg.com/vi/yXtN4m4MBx4/maxresdefault.jpg"
       ],
       "price": 60000,
       "year": 2020,
       "mileage": 110,
-      "color": "branco",
+      "color": "Branco",
       "city": "Queimadas",
       "plate": "XFG-1234",
-      "registerDate": "01012023",
-      "visualizationCounter": 3891
+      "registerDate": "2023-06-09T23:10:06.000Z",
+      "visualizationCounter": 3894
     },
     {
       "id": 4,
       "brand": "Renault",
       "model": "Kwid",
-      "cover": "https://2.bp.blogspot.com/-LVB47KPg3EE/WUfLq8UII5I/AAAAAAACGB0/cMJ3iwqc5WgfKV6ly1NHRGBKLuLXQA7hwCLcBGAs/s1600/35140517042_f23252ebe8_k.jpg",
       "images": [
+        "https://2.bp.blogspot.com/-LVB47KPg3EE/WUfLq8UII5I/AAAAAAACGB0/cMJ3iwqc5WgfKV6ly1NHRGBKLuLXQA7hwCLcBGAs/s1600/35140517042_f23252ebe8_k.jpg",
         "https://www.fiattrevisul.com.br/imgs/dXBsb2Fkcy9zZW1pcy8xNjc2MDMxNjIxLTEuanBn/750/400/N/crop",
         "https://i.ytimg.com/vi/H3QKJCAczMo/maxresdefault.jpg"
       ],
@@ -69,15 +69,15 @@
       "color": "Preto",
       "city": "São Paulo",
       "plate": "PLO-9876",
-      "registerDate": "10012019",
+      "registerDate": "2023-06-09T23:10:06.000Z",
       "visualizationCounter": 4635
     },
     {
       "id": 5,
       "brand": "Chevrolet",
       "model": "Onyx",
-      "cover": "https://quatrorodas.abril.com.br/wp-content/uploads/2019/02/chevrolet-onix-lt-1-16x9.jpg?quality=70&strip=info",
       "images": [
+        "https://quatrorodas.abril.com.br/wp-content/uploads/2019/02/chevrolet-onix-lt-1-16x9.jpg?quality=70&strip=info",
         "https://www.automaistv.com.br/wp-content/uploads/2021/12/chevrolet_onix_rs_9_edited-990x594.jpg",
         "https://mundoconectado.com.br/uploads/chamadas/chevrolet-onix-foi-o-carro-mais-vendido-no-brasil-em-dezembro-de-2022-veja-top-5.jpg"
       ],
@@ -87,15 +87,15 @@
       "color": "Vermelho",
       "city": "Campina Grande",
       "plate": "GHG-0921",
-      "registerDate": "21062022",
+      "registerDate": "2023-06-09T23:10:06.000Z",
       "visualizationCounter": 2299
     },
     {
       "id": 6,
       "brand": "Fiat",
       "model": "Siena",
-      "cover": "https://blog.olhonocarro.com.br/wp-content/uploads/2023/01/fiat-siena-2007-G4-dianteira.jpg",
       "images": [
+        "https://blog.olhonocarro.com.br/wp-content/uploads/2023/01/fiat-siena-2007-G4-dianteira.jpg",
         "https://img2.icarros.com/dbimg/imgnoticia/4/23852_1",
         "https://www.brcarauto.com.br/carros/4d207f7ae56741c889ade18c37789764-thumbjpeg-fiat-siena-8929009-1000-750-70.jpg"
       ],
@@ -103,10 +103,10 @@
       "year": 2015,
       "mileage": 676,
       "color": "Prata",
-      "city": "Rio de Janeior",
+      "city": "Rio de Janeiro",
       "plate": "ADC-1431",
-      "registerDate": "25122022",
-      "visualizationCounter":3811
+      "registerDate": "2023-06-09T23:10:06.000Z",
+      "visualizationCounter": 3811
     }
   ]
 }

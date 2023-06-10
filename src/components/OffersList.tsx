@@ -11,6 +11,7 @@ interface OffersListProps {
 export function OffersList({ dataSource }: OffersListProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOffer, setSelectedOffer] = useState(0);
+
   return (
     <>
       <List
@@ -31,7 +32,8 @@ export function OffersList({ dataSource }: OffersListProps) {
               }}
             >
               <List.Item.Meta
-                avatar={<Image width={80} height={50} src={item.cover} />}
+                style={{ cursor: "pointer" }}
+                avatar={<Image width={80} height={50} src={item.images[0]} />}
                 title={<Typography.Text>{item.model}</Typography.Text>}
                 description={`Marca: ${item.brand}, Ano: ${item.year}, Valor: R$ ${item.price}`}
               />
@@ -44,7 +46,9 @@ export function OffersList({ dataSource }: OffersListProps) {
               <OffersModal
                 {...item}
                 openModal={isModalOpen}
-                handleClose={() => setIsModalOpen(false)}
+                handleClose={() => {
+                  setIsModalOpen(false);
+                }}
               />
             )}
           </>
