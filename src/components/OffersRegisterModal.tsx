@@ -14,7 +14,6 @@ import {
 import { useState, useEffect, ChangeEvent } from "react";
 import { CarProps } from "../Global/types";
 import { api } from "../api";
-import { RcFile } from "antd/es/upload";
 
 type OffersRegisterModal = {
   openModal: boolean;
@@ -30,9 +29,6 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
   const [, forceUpdate] = useState({});
   const [formState, setFormState] = useState<FormState>({});
   const [fileList, setFileList] = useState([]);
-  const [uploading, setUploading] = useState(false);
-  const [imagem, setImagem] = useState(null);
-  const [isOpenModal, setIsOpenModal] = useState(false);
 
   useEffect(() => {
     forceUpdate({});
@@ -46,28 +42,7 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
     }));
   };
 
-  const params: UploadProps = {
-    onRemove: (file) => {
-      const index = fileList.indexOf(file);
-      const newFileList = fileList.slice();
-      newFileList.splice(index, 1);
-      setFileList(newFileList);
-    },
-    beforeUpload: (file) => {
-      setFileList([...fileList, file]);
-
-      return false;
-    },
-    fileList,
-  };
-
   async function onFinish(values: CarProps) {
-    const formData = new FormData();
-    fileList.forEach((file) => {
-      formData.append("files[]", file as RcFile);
-    });
-
-    setUploading(true);
     try {
       await api.post("/offers", {
         brand: values.brand,
@@ -81,13 +56,11 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
         images: values.images,
         registerDate: new Date(),
       });
-      setUploading(false);
       message.success("Oferta registrada com sucesso!", 3);
-      form.resetFields()
+      form.resetFields();
     } catch (error) {
-      console.log(error)
+      console.log(error);
       message.error("Algo inesperado aconteceu!", 3);
-
     }
   }
 
@@ -95,13 +68,6 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
     console.log("Failed:", errorInfo);
   };
 
-  const normFile = (e: any) => {
-    console.log("Upload event:", e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
   return (
     <Modal
       open={props.openModal}
@@ -244,25 +210,23 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
             <Form.Item
               name="images"
               label="Imagens"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
               rules={[{ required: true, message: "Campo obrigatório!" }]}
             >
               <Upload
-                {...params}
                 action="http://localhost:3000/offers"
                 multiple
+                beforeUpload={() => false}
                 maxCount={3}
                 fileList={fileList}
-                onChange={(response) => {
-                  if (response.file.status !== "uploading") {
-                    console.log(response.file, response.fileList);
+                onChange={({ file, fileList }) => {
+                  if (file.status !== "uploading") {
+                    console.log(file, fileList);
                   }
-                  if (response.file.status === "done") {
-                    message.success(`${response.file.name} 
+                  if (file.status === "done") {
+                    message.success(`${file.name} 
                                      file uploaded successfully`);
-                  } else if (response.file.status === "error") {
-                    message.error(`${response.file.name} 
+                  } else if (file.status === "error") {
+                    message.error(`${file.name} 
                                    file upload failed.`);
                   }
                 }}
@@ -275,13 +239,7 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
           </Col>
         </Row>
         <Row justify={"center"}>
-          <Button
-            disabled={fileList.length === 0}
-            loading={uploading}
-            type="primary"
-            htmlType="submit"
-            onClick={props.handleClose}
-          >
+          <Button type="primary" htmlType="submit" onClick={props.handleClose}>
             Enviar
           </Button>
         </Row>
