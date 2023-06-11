@@ -5,9 +5,9 @@
 Aplicação de desafio técnico proposto pela Else-consultorias, a aplicação consite em um site para visualizar e cadastrar ofetas de carros que estão a venda. As Ofertas podem ser filtradas na busca.
 
 <div align="center">
-  <img src="/src/assets/Covers/cover1.png">
-  <img src="/src/assets/Covers/cover2.png">
-  <img src="/src/assets/Covers/cover3.png">
+  <img src="/src/assets/cover1.png">
+  <img src="/src/assets/cover2.png">
+  <img src="/src/assets/cover3.png">
 </div>
 
 #### <div align="right">- Projeto Finalizado 🟢 <div>
