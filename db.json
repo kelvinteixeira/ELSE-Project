@@ -16,7 +16,7 @@
       "city": "Campina Grande",
       "plate": "QFvc35AD",
       "registerDate": "2023-06-09T23:10:06.000Z",
-      "visualizationCounter": 4646
+      "visualizationCounter": 38
     },
     {
       "id": 2,
@@ -34,7 +34,7 @@
       "city": "Campina Grande",
       "plate": "QFT-3456",
       "registerDate": "2023-06-09T23:10:06.000Z",
-      "visualizationCounter": 1325
+      "visualizationCounter": 1371
     },
     {
       "id": 3,
@@ -52,7 +52,7 @@
       "city": "Queimadas",
       "plate": "XFG-1234",
       "registerDate": "2023-06-09T23:10:06.000Z",
-      "visualizationCounter": 3894
+      "visualizationCounter": 3907
     },
     {
       "id": 4,
@@ -70,7 +70,7 @@
       "city": "São Paulo",
       "plate": "PLO-9876",
       "registerDate": "2023-06-09T23:10:06.000Z",
-      "visualizationCounter": 4635
+      "visualizationCounter": 4642
     },
     {
       "id": 5,
@@ -88,7 +88,7 @@
       "city": "Campina Grande",
       "plate": "GHG-0921",
       "registerDate": "2023-06-09T23:10:06.000Z",
-      "visualizationCounter": 2299
+      "visualizationCounter": 2304
     },
     {
       "id": 6,
@@ -106,7 +106,7 @@
       "city": "Rio de Janeiro",
       "plate": "ADC-1431",
       "registerDate": "2023-06-09T23:10:06.000Z",
-      "visualizationCounter": 3811
+      "visualizationCounter": 3815
     }
   ]
 }

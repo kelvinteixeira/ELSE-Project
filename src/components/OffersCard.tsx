@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Typography, Card, Row, Image } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { CarProps } from "../Global/types";
@@ -11,10 +11,6 @@ export function OffersCard(props: CarProps) {
     props.visualizationCounter
   );
 
-  useEffect(() => {
-    setVisualizationCount(props.visualizationCounter);
-  }, [props.visualizationCounter]);
-
   async function incrementVisualization(id: number) {
     await api.patch(`/offers/${id}`, {
       visualizationCounter: visualizationCount + 1,
@@ -25,6 +21,7 @@ export function OffersCard(props: CarProps) {
   return (
     <>
       <Card
+        key={props.id}
         onClick={() => {
           setIsModalOpen(true);
           incrementVisualization(props.id);
@@ -68,9 +65,7 @@ export function OffersCard(props: CarProps) {
       <OffersModal
         {...props}
         openModal={isModalOpen}
-        handleClose={() => {
-          setIsModalOpen(false);
-        }}
+        handleClose={() => setIsModalOpen(false)}
       />
     </>
   );

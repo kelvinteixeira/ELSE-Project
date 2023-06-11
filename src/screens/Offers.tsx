@@ -13,9 +13,7 @@ export function Offers() {
   useEffect(() => {
     api
       .get("/offers")
-      .then((response) => {
-        return setOffers(response.data);
-      })
+      .then((response) => setOffers(response.data))
       .catch((err) => {
         console.log("Erro: ", err);
       });
@@ -37,11 +35,9 @@ export function Offers() {
       </Tooltip>
 
       <Row wrap justify={"space-around"}>
-        {visualizationMode ? (
-          <OffersList dataSource={offers} />
-        ) : (
-          offers.map((offer) => <OffersCard {...offer} key={offer.id} />)
-        )}
+        {visualizationMode
+          ? offers.map((offer) => <OffersList {...offer} key={offer.id} />)
+          : offers.map((offer) => <OffersCard {...offer} key={offer.id} />)}
       </Row>
     </>
   );
