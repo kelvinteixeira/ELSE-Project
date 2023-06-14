@@ -1,4 +1,4 @@
-# ELSE-PRoject
+# Projeto ELSE consultoria
 
 ## Sobre o projeto:
 
