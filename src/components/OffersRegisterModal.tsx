@@ -63,7 +63,7 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
     }
   }
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed = (errorInfo: unknown) => {
     console.log("Failed:", errorInfo);
   };
 
