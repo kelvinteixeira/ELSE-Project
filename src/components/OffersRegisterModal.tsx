@@ -27,7 +27,7 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
   const [form] = Form.useForm();
   const [, forceUpdate] = useState({});
   const [formState, setFormState] = useState<FormState>({});
-  const [fileList] = useState([]);
+  const [fileList, setFileList] = useState([]);
 
   useEffect(() => {
     forceUpdate({});
