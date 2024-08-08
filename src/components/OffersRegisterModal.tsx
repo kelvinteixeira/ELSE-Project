@@ -9,7 +9,6 @@ import {
   Col,
   Upload,
   message,
-  UploadProps,
 } from "antd";
 import { useState, useEffect, ChangeEvent } from "react";
 import { CarProps } from "../Global/types";
@@ -28,7 +27,7 @@ export function OffersRegisterModal(props: OffersRegisterModal) {
   const [form] = Form.useForm();
   const [, forceUpdate] = useState({});
   const [formState, setFormState] = useState<FormState>({});
-  const [fileList, setFileList] = useState([]);
+  const [fileList] = useState([]);
 
   useEffect(() => {
     forceUpdate({});
